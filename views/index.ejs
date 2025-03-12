@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %> - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center mb-6"><%= name %></h1>
+        <p class="text-center text-gray-600">📧 <%= email %> | 📞 <%= phone %> | 🌐 <a href="<%= linkedin %>" class="text-blue-500">LinkedIn</a></p>
+        
+        <h2 class="text-2xl font-semibold mt-6">Work Experience</h2>
+        <% workExperience.forEach(job => { %>
+            <div class="mt-4 p-4 border rounded shadow-sm bg-white">
+                <h3 class="text-xl font-bold"><%= job.role %> - <%= job.company %></h3>
+                <p class="text-gray-600"><%= job.duration %></p>
+                <ul class="list-disc ml-6">
+                    <% job.highlights.forEach(point => { %>
+                        <li><%= point %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% }) %>
+        
+        <h2 class="text-2xl font-semibold mt-6">Skills</h2>
+        <div class="flex flex-wrap gap-2 mt-2">
+            <% skills.forEach(skill => { %>
+                <span class="px-3 py-1 bg-blue-200 text-blue-800 rounded-full text-sm"><%= skill %></span>
+            <% }) %>
+        </div>
+        
+        <h2 class="text-2xl font-semibold mt-6">Education</h2>
+        <% education.forEach(edu => { %>
+            <div class="mt-4 p-4 border rounded shadow-sm bg-white">
+                <h3 class="text-xl font-bold"><%= edu.degree %></h3>
+                <p class="text-gray-600"><%= edu.school %> - <%= edu.year %></p>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
